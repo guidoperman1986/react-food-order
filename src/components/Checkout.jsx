@@ -4,7 +4,7 @@ import { currencyFormatter } from '../util/formatting';
 import { Modal } from './UI/Modal';
 import { Input } from './UI/Input';
 import { Button } from './UI/Button';
-import UiContext from '../store/UIContext';
+import UiContext from '../store/temp';
 import { useHttp } from '../hooks/useHttp';
 
 const requestConfig = {

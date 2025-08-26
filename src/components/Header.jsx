@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import logoImg from "../assets/logo.jpg";
 import { Button } from '../components/UI/Button';
 import CartContext from '../store/CartContext.jsx';
-import UiContext from "../store/UIContext.jsx";
+import UiContext from "../store/temp.jsx";
 
 
 export const Header = () => {
