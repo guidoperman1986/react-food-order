@@ -8,7 +8,7 @@ export const Meals = () => {
         method: 'GET'
     }), []);
 
-    const { data: loadedMeals, error, isLoading, sendRequest } = useHttp('http://localhost:3000/meals', config);
+    const { data: loadedMeals, error, isLoading, sendRequest } = useHttp('https://nest-food-order-backend.onrender.com/meals', config);
 
     if (isLoading) {
         return <p className='center'>Loading meals...</p>;

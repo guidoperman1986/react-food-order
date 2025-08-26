@@ -18,7 +18,7 @@ export const CartItem = ({ item }) => {
             <div className="cart-item">
                 <img
                     style={{ width: '100px', objectFit: 'cover' }}
-                    src={'http://localhost:3000/' + item.image}
+                    src={'https://nest-food-order-backend.onrender.com/' + item.image}
                     alt={item.name}
                 />
                 <div className="cart-item-details">
