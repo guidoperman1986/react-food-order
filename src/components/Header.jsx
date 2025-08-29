@@ -2,16 +2,21 @@ import { useContext } from 'react';
 import logoImg from "../assets/logo.jpg";
 import { Button } from '../components/UI/Button';
 import CartContext from '../store/CartContext.jsx';
-import UiContext from "../store/temp.jsx";
+import UiContext from "../store/UIContext.jsx";
 
 
 export const Header = () => {
     const { cartState } = useContext(CartContext);
-    const { showCartModal, isCartModalOpen } = useContext(UiContext);
+    const { showCartModal, isCartModalOpen, showLoginModal, isLoginModalOpened } = useContext(UiContext);
     const newTotalItems = cartState.items.reduce((acc, item) => acc + item.quantity, 0);
 
     const handleOpeningCart = () => {
         showCartModal(!isCartModalOpen);
+    };
+
+
+    const handleOpenLogin = () => {
+        showLoginModal(!isLoginModalOpened);
     };
 
     return (
@@ -26,6 +31,10 @@ export const Header = () => {
                     textOnly
                     onClick={handleOpeningCart}
                 >Cart ({newTotalItems})</Button>
+                <Button
+                    textOnly
+                    onClick={handleOpenLogin}
+                >Login</Button>
             </nav>
         </header>
     )

@@ -4,9 +4,11 @@ const UiContext = createContext({
     isCartModalOpen: false,
     isCheckoutModalOpen: false,
     isSuccessOrderModalOpen: false,
+    isLoginModalOpened: false,
     showCartModal: (show) => { },
     showCheckoutModal: (show) => { },
-    showSuccessOrderModal: (show) => { }
+    showSuccessOrderModal: (show) => { },
+    showLoginModal: (show) => { }
 });
 
 const uiReducer = (state, action) => {
@@ -26,6 +28,12 @@ const uiReducer = (state, action) => {
                 ...state,
                 isSuccessOrderModalOpen: action.payload
             };
+        case 'SHOW_LOGIN_MODAL': {
+            return {
+                ...state,
+                isLoginModalOpened: action.payload
+            }
+        }
         default:
             return state;
     }
@@ -35,7 +43,8 @@ export const UIProvider = ({ children }) => {
     const [uiState, dispatch] = useReducer(uiReducer, {
         isCartModalOpen: false,
         isCheckoutModalOpen: false,
-        isSuccessOrderModalOpen: false
+        isSuccessOrderModalOpen: false,
+        isLoginModalOpened: false,
     });
 
     const showCartModal = (show) => {
@@ -59,14 +68,23 @@ export const UIProvider = ({ children }) => {
         });
     };
 
+    const showLoginModal = (show) => {
+        dispatch({
+            type: 'SHOW_LOGIN_MODAL',
+            payload: show
+        })
+    }
+
     return (
         <UiContext.Provider value={{
             isCartModalOpen: uiState.isCartModalOpen,
             isCheckoutModalOpen: uiState.isCheckoutModalOpen,
             isSuccessOrderModalOpen: uiState.isSuccessOrderModalOpen,
+            isLoginModalOpened: uiState.isLoginModalOpened,
             showCartModal,
             showCheckoutModal,
-            showSuccessOrderModal
+            showSuccessOrderModal,
+            showLoginModal
         }}>
             {children}
         </UiContext.Provider>

@@ -4,11 +4,13 @@ import { CartProvider } from "./store/CartContext";
 import { UIProvider } from "./store/UIContext.jsx";
 import { Cart } from './components/Cart'
 import { Checkout } from "./components/Checkout";
+import { Login } from "./components/Login.jsx";
 
 function App() {
   return (
     <UIProvider>
       <CartProvider>
+        <Login />
         <Header />
         <Meals />
         <Cart />
